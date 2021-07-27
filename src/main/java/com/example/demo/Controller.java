@@ -10,13 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import org.yaml.snakeyaml.util.ArrayUtils;
-
 import java.util.ArrayList;
 import java.util.List;
-
-
-
 
 
 @RestController
@@ -32,6 +27,7 @@ public class Controller {
     public String getRoot() {
         return "The root is able to communicate";
     }
+    
     @GetMapping("/orders")
     public List<DemoOrder> getOrders() {
         return repository.findAll();
@@ -40,18 +36,13 @@ public class Controller {
     @GetMapping("/menu")
     public ArrayList<String> getMenu() {
         ArrayList<String> menu = new ArrayList<String>();
-        //String fullMenu = "";
 
-        //fullMenu += "Entrees: \n";
         for(String e : meals){
             menu.add(e);
-            //fullMenu += "\t" + e + "\n";
         }
 
-        //fullMenu += "\n\nDrinks: \n";
         for(String x : drinks){
             menu.add(x);
-            //fullMenu +="\t" + x + "\n";
         }
 
         return menu;
